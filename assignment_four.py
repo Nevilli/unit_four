@@ -1,37 +1,74 @@
+# Liam Neville
+# 10/5/18
+# This is a program that lets the user play a game of blackjack against the dealer
 import random
 
 
 def draw_card():
+    """
+    This function draws a random card
+    :return: random.randint(1, 10)
+    """
+# Aces are always one
     return random.randint(1, 10)
 
 
+def dealer_cards():
+    """
+    This function draws two cards for the dealer and adds them together
+    :return: total3
+    """
+    value4 = draw_card()
+    value5 = draw_card()
+    draw_card()
+    print("The dealer drew a", value4)
+    draw_card()
+    print("The dealer also drew a", value5)
+    total3 = value4 + value5
+    print("The dealer's total is", total3)
+    return total3
+
+
+def win(player, dealer):
+    """
+    This function determines who wins the round
+    :param player: player total
+    :param dealer: dealer total
+    :return: none
+    """
+    if player > dealer:
+        print("You have won!")
+    elif player < dealer:
+        print("The dealer has won")
+    else:
+        print("It's a tie!!!")
+
+
 def main():
+    """
+    This is the main
+    :return:
+    """
     value1 = draw_card()
     value2 = draw_card()
     value3 = draw_card()
     draw_card()
-    print("you drew a", value1)
+    print("You drew a", value1)
     draw_card()
-    print("you also drew a", value2)
+    print("You also drew a", value2)
     total = value1 + value2
-    print("your total is", total)
-    hit_or_stay = input("would you like to hit or stay?")
+    print("Your total is", total)
+    hit_or_stay = input("Would you like to hit or stay?")
     if hit_or_stay == "hit":
         draw_card()
-        print("you drew a", value3)
-        total2 = total + value3
-        print("your new total is", total2)
-        if total2 > 21:
-            print("you have lost")
-    else:
-        value4 = draw_card()
-        value5 = draw_card()
-        draw_card()
-        print("the dealer drew a", value4)
-        draw_card()
-        print("the dealer dre a", value5)
-        total3 = value4 + value5
-        print("the dealer's total is", total3)
+        print("You drew a", value3)
+        total = total + value3
+        print("Your new total is", total)
+        if total > 21:
+            print("You have lost")
+        else:
+            total3 = dealer_cards()
+            win(total, total3)
 
 
 main()
