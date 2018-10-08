@@ -45,10 +45,6 @@ def win(player, dealer):
 
 
 def main():
-    """
-    This is the main function which runs the blackjack game
-    :return: None
-    """
     value1 = draw_card()
     value2 = draw_card()
     value3 = draw_card()
