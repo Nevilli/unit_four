@@ -7,7 +7,7 @@ import random
 def draw_card():
     """
     This function draws a random card
-    :return: random.randint(1, 10)
+    :return: Random integer that represents card value
     """
 # Aces are always one
     return random.randint(1, 10)
@@ -16,7 +16,7 @@ def draw_card():
 def dealer_cards():
     """
     This function draws two cards for the dealer and adds them together
-    :return: total3
+    :return: Dealer's total
     """
     value4 = draw_card()
     value5 = draw_card()
@@ -34,7 +34,7 @@ def win(player, dealer):
     This function determines who wins the round
     :param player: player total
     :param dealer: dealer total
-    :return: none
+    :return: None
     """
     if player > dealer:
         print("You have won!")
@@ -46,8 +46,8 @@ def win(player, dealer):
 
 def main():
     """
-    This is the main
-    :return:
+    This is the main function which runs the blackjack game
+    :return: None
     """
     value1 = draw_card()
     value2 = draw_card()
@@ -69,6 +69,9 @@ def main():
         else:
             total3 = dealer_cards()
             win(total, total3)
+    elif hit_or_stay == "stay":
+        total3 = dealer_cards()
+        win(total, total3)
 
 
 main()
